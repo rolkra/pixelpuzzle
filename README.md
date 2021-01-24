@@ -40,4 +40,4 @@ sprite <- c(
 show_sprite(sprite)
 ```
 
-<img src="man/figures/pixelpuzzle-defsprite.png" alt="define pixel art" width="100">
+<img src="man/figures/pixelpuzzle-defsprite.png" alt="define pixel art" width="200">
