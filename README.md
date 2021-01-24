@@ -6,13 +6,13 @@ Puzzle Game For The R-Console. Restore the pixel art by shifting rows!
 
 ## Installation
 
-CRAN
+CRAN (coming soon)
 
 ```r
 install.packages("explore")
 ```
 
-From github
+Github
 
 ```r
 # install from github
