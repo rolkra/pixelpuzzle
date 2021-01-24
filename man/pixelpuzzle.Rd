@@ -13,7 +13,7 @@ the player can choose one of the predefined pixel arts.}
 \item{bg}{Background color, default is transparent (".")}
 }
 \value{
-
+Nothing
 }
 \description{
 Play pixelpuzzle in the R-console
