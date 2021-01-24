@@ -22,7 +22,7 @@ In case you want to define your own pixel art you can the following codes:
 * X = Black
 * . = No color (transparent)
 
-`
+```
 library(pixelpuzzle)
 
 sprite <- c(
@@ -38,5 +38,5 @@ sprite <- c(
 )
 
 show_sprite(sprite)
-`
+```
 
