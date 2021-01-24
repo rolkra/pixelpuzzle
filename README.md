@@ -64,7 +64,7 @@ show_sprite(sprite)
 
 <img src="man/figures/pixelpuzzle-defsprite.png" alt="define pixel art" width="200">
 
-You can use this pixel art by passing it as parameter to `pixelpuzzle()'
+You can use this pixel art by passing it as parameter to `pixelpuzzle()`
 
 ```r
 pixelpuzzle(sprite)
