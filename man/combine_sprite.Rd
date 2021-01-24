@@ -21,7 +21,7 @@ Combine two sprite
 }
 \examples{
 sprites <- define_sprite()
-sprite1 <- sprites[["alien"]]
+sprite1 <- sprites[["buhu"]]
 sprite2 <- sprites[["sword"]]
 show_sprite(combine_sprite(sprite1, sprite2))
 }

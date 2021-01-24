@@ -2,7 +2,7 @@
 % Please edit documentation in R/pixelpuzzle.R
 \name{shuffle_sprite}
 \alias{shuffle_sprite}
-\title{Returns a list of predefined sprites}
+\title{Shuffle a sprite randomly}
 \usage{
 shuffle_sprite(img, difficulty = 1)
 }
@@ -15,7 +15,7 @@ shuffle_sprite(img, difficulty = 1)
 List of sprites
 }
 \description{
-Returns a list of predefined sprites
+Shuffle a sprite randomly
 }
 \examples{
 sprites <- define_sprite()

@@ -9,14 +9,12 @@
 #' @return Prints sprite in console 
 #' @export
 #' @examples 
-#' @examples 
 #' sprites <- define_sprite()
 #' 
 #' ## show first sprite
 #' show_sprite(sprites[[1]])
-#' ## show sprite named "alien"
+#' ## show sprite named "sword"
 #' show_sprite(sprites[["sword"]])
-
 
 show_sprite <- function(img, rownumbers = TRUE, cls = TRUE, bg = ".") {
   
@@ -61,11 +59,19 @@ show_sprite <- function(img, rownumbers = TRUE, cls = TRUE, bg = ".") {
 } # show_sprite
 
 
+#' Sift a row of the sprite
+#'
+#' @param img Image of Sprite (vector of strings)
+#' @param row Which row is shifted
+#' @param shift Nuber of shifts
+#' @importFrom stringr str_c
+#' @return Sprite 
+
 shift_sprite_row <- function(img, row = 1, shift = 1) {
   
   line <- img[row]
   n <- nchar(line)
-  img[row] <- str_c(substr(line, n-shift+1, n), substr(line, 1, n-shift))
+  img[row] <- stringr::str_c(substr(line, n-shift+1, n), substr(line, 1, n-shift))
   img
 } # shift_sprite_row
 
@@ -79,7 +85,7 @@ shift_sprite_row <- function(img, row = 1, shift = 1) {
 #' 
 #' ## show first sprite
 #' show_sprite(sprites[[1]])
-#' ## show sprite named "alien"
+#' ## show sprite named "sword"
 #' show_sprite(sprites[["sword"]])
 
 define_sprite <- function() {
@@ -220,10 +226,10 @@ define_sprite <- function() {
          ".BBBBBB...BBB..."),
   
   sword = c(
-    "XXX...............",
-    "XCBX..............",
-    "XBCBX.............",
-    ".XBCBX............",
+    "XXX................",
+    "XCBX...............",
+    "XBCBX..............",
+    ".XBCBX.............",
     "..XBCBX............",
     "...XBCBX...........",
     "....XBCBX...XX.....",
@@ -256,6 +262,13 @@ define_sprite <- function() {
   sprites
   
 } # define_sprites
+
+
+#' Select one of the predefined sprites
+#'
+#' @param sprites List of predefined sprites
+#' @param bg Background of the sprite ("." = transparent)
+#' @return Sprite 
 
 select_sprite <- function(sprites, bg = ".")  {
   
@@ -296,6 +309,19 @@ select_sprite <- function(sprites, bg = ".")  {
 } # select sprites
 
 
+#' Combine two sprite
+#'
+#' @param img Sprite 1
+#' @param img2 Sprite 2 (added on the right)
+#' @param gap Gap between the sprites
+#' @return Sprite
+#' @examples 
+#' sprites <- define_sprite()
+#' sprite1 <- sprites[["buhu"]]
+#' sprite2 <- sprites[["sword"]]
+#' show_sprite(combine_sprite(sprite1, sprite2))
+#' @export
+
 combine_sprite <- function(img, img2, gap = 1) {
   
   h1 <- length(img)
@@ -318,6 +344,13 @@ combine_sprite <- function(img, img2, gap = 1) {
 }
 
 
+#' Colorize a sprite
+#'
+#' @param img Sprite
+#' @param colors Vector of colors that are used
+#' @param sleep Time between setting colors
+#' @return Nothing
+
 colorize_sprite <- function(img, colors = c("X", "S", "W", "S", "X", "ORI"), sleep = 0.1) {
   
   ori <- img
@@ -336,18 +369,41 @@ colorize_sprite <- function(img, colors = c("X", "S", "W", "S", "X", "ORI"), sle
   
 } # colorize cli sprite
 
+
+#' Shuffle a sprite randomly
+#'
+#' @param img Sprite
+#' @param difficulty Difficulty (intensity of shuffeling)
+#' @return List of sprites 
+#' @importFrom stats runif
+#' @examples 
+#' sprites <- define_sprite()
+#' sprite <- sprites[["sword"]]
+#' show_sprite(shuffle_sprite(sprite))
+#' @export
+
 shuffle_sprite <- function(img, difficulty = 1) {
   
   for(i in seq_along(1:(difficulty*2))) {
     
     row <- sample(1:length(img), 1)
-    shift <- round(runif(1, 1, nchar(img[1])-1 ), 0)
+    shift <- round(stats::runif(1, 1, nchar(img[1])-1 ), 0)
     img <- shift_sprite_row(img, row = row, shift = shift)
     
   }
   
   img
 }
+
+#' Flip a sprite
+#'
+#' @param img Sprite
+#' @return Sprite 
+#' @examples 
+#' sprites <- define_sprite()
+#' sprite <- sprites[["sword"]]
+#' show_sprite(flip_sprite(sprite))
+#' @export
 
 flip_sprite <- function(img) {
   
@@ -362,6 +418,14 @@ flip_sprite <- function(img) {
   # return result
   new
 } # flip_sprite
+
+
+#' Play pixelpuzzle with a sprite
+#'
+#' @param img Sprite to play with
+#' @param ori Original Sprite
+#' @param bg Background ("." is transparent)
+#' @return Nothing  
 
 play_sprite <- function(img, ori, bg = ".")  {
 
@@ -404,13 +468,19 @@ play_sprite <- function(img, ori, bg = ".")  {
     }
     last_input <- input
     row <- suppressWarnings(as.integer(input))
-    img <- img %>% shift_sprite_row(row)
+    img <- shift_sprite_row(img, row)
     show_sprite(img, bg = bg)
   }
 } # play 
 
 
-intro <- function(sleep = 0.5) {
+#' Intro of pixelpuzzle game
+#'
+#' @param sleep How long to wait between change of color
+#' @return Nothing
+#' @importFrom beepr beep  
+
+intro <- function(sleep = 0.1) {
   
   # define PIXEL
   img <- c("RRRR.M.B...B.CCCC.G...",
@@ -420,7 +490,7 @@ intro <- function(sleep = 0.5) {
            "R....M.B...B.CCCC.GGGG")
   
   # show in different colors
-  colorize_sprite(img, sleep = 0.1, 
+  colorize_sprite(img, sleep = sleep, 
                       colors = c("R","M","B","C","G","Y","ORI"))
   
   # add text
@@ -438,7 +508,7 @@ intro <- function(sleep = 0.5) {
 #' @param img Image of Sprite (vector of strings). If no sprite is provided,
 #' the player can choose one of the predefined pixel arts.
 #' @param bg Background color, default is transparent (".")
-#' @return  
+#' @return Nothing  
 #' @export
 #' @examples
 #' ## Start game (in interactive R sessions)

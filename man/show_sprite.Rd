@@ -26,6 +26,6 @@ sprites <- define_sprite()
 
 ## show first sprite
 show_sprite(sprites[[1]])
-## show sprite named "alien"
+## show sprite named "sword"
 show_sprite(sprites[["sword"]])
 }
