@@ -1,12 +1,12 @@
 Package: pixelpuzzle
-Title: Puzzle Game For The R-Console
+Title: Puzzle Game For The R Console
 Version: 1.0.0
 Authors@R: 
     person(given = "Roland",
            family = "Krasser",
            role = c("aut", "cre"),
            email = "roland.krasser@gmail.com")
-Description: Puzzle Game that can be played in the R-Console.
+Description: Puzzle game that can be played in the R console.
   Restore the pixel art by shifting rows.
 License: GPL-3
 Encoding: UTF-8

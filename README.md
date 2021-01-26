@@ -1,15 +1,15 @@
 # pixelpuzzle
 
-Puzzle Game For The R-Console. Restore the pixel art by shifting rows!
+Puzzle game for the R console. Restore the pixel art by shifting rows!
 
 <img src="man/figures/pixelpuzzle-allstars.png" alt="example pixel art" width="800">
 
 ## Installation
 
-CRAN (coming soon)
+CRAN
 
 ```r
-install.packages("explore")
+install.packages("pixelpuzzle")
 ```
 
 Github
@@ -17,7 +17,7 @@ Github
 ```r
 # install from github
 if (!require(devtools)) install.packages("devtools")
-devtools::install_github("rolkra/explore")
+devtools::install_github("rolkra/pixelpuzzle")
 ```
 
 # Start Game
