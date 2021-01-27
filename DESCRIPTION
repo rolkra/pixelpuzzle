@@ -1,5 +1,5 @@
 Package: pixelpuzzle
-Title: Puzzle Game For The R Console
+Title: Puzzle Game for the R Console
 Version: 1.0.0
 Authors@R: 
     person(given = "Roland",
