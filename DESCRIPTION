@@ -1,6 +1,6 @@
 Package: pixelpuzzle
 Title: Puzzle Game for the R Console
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: 
     person(given = "Roland",
            family = "Krasser",
@@ -10,8 +10,7 @@ Description: Puzzle game that can be played in the R console.
   Restore the pixel art by shifting rows.
 License: GPL-3
 Encoding: UTF-8
-LazyData: true
 URL: https://github.com/rolkra/pixelpuzzle
 Imports: beepr, cli, stringr
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
